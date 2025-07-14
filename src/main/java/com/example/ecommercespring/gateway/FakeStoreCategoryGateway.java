@@ -1,14 +1,16 @@
 package com.example.ecommercespring.gateway;
 
-import com.example.ecommercespring.dto.CategoryDTO;
-import com.example.ecommercespring.dto.FakeStoreCategoryResponseDTO;
+import com.example.ecommercespring.dto.*;
 import com.example.ecommercespring.gateway.api.FakeStoreCategoryApi;
+import com.example.ecommercespring.mappers.GetAllCategoriesMapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.io.IOException;
 import java.util.List;
 
-@Component
+@Component("fakeStoreCategoryGateway")
 public class FakeStoreCategoryGateway implements ICategoryGateway{
 
     private final FakeStoreCategoryApi fakeStoreCategoryApi;
@@ -28,10 +30,6 @@ public class FakeStoreCategoryGateway implements ICategoryGateway{
             throw new IOException("Failed to fetch categories from FakeStore API");
         }
         // 3. Map the response to a list of CategoryDTO objects
-        return response.getCategories().stream()
-                .map(category -> CategoryDTO.builder()
-                        .name(category)
-                        .build())
-                .toList();
+        return GetAllCategoriesMapper.toCategoryDto(response);
     }
 }

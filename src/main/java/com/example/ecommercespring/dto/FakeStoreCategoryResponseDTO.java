@@ -17,4 +17,5 @@ public class FakeStoreCategoryResponseDTO {
     private String message;
 
     private List<String> categories;
+
 }

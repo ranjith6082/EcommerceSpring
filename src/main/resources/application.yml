@@ -1,0 +1,9 @@
+spring:
+  application:
+        name: EcommerceSpring
+
+server:
+    port: ${PORT}
+
+base:
+    url: ${BASE_URL}
