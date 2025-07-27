@@ -1,6 +1,30 @@
 spring:
   application:
         name: EcommerceSpring
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce_db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    #This tells Spring Boot which JDBC driver class to use
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    #Tells hibernate to print all the generated SQL queries to the console. Useful for debugging or learning.
+    show-sql: true
+    #Specefies the SQL dialect hibernate should use for the database.
+    #Ensure hibernates generates SQL optimized for the specific database.
+    #without this, spring boot might guess based on the Jdbc url.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+    hibernate:
+      ddl-auto: update
+      # This setting controls how Hibernate handles the database schema.
+      #none > no changes to the DB schema
+      #create > drops and recreates the schema in every run.
+      #update > updates the DB schema(add new tables, columns, etc) without dropping existing data.
+      #create-drop > Drops the schema at application stops.
 
 server:
     port: ${PORT}
