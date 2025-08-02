@@ -1,7 +1,8 @@
-package com.example.ecommercespring.gateway;
+package com.example.ecommercespring.gateway.fakestore;
 
-import com.example.ecommercespring.dto.FakeStoreProductsCategoryResponseDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreProductsCategoryResponseDTO;
 import com.example.ecommercespring.dto.ProductsItemDTO;
+import com.example.ecommercespring.gateway.IProductsCategoryGateway;
 import com.example.ecommercespring.gateway.api.FakeStoreProductsCategoryApi;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.example.ecommercespring.dto;
+package com.example.ecommercespring.dto.product;
 
 import lombok.*;
 
@@ -9,15 +9,16 @@ import lombok.*;
 @Builder
 @Data
 public class ProductDTO {
+	private Long id;
 	private String image;
 	private String color;
 	private int price;
 	private String description;
 	private int discount;
 	private String model;
-	private Long id;
 	private String title;
-	private String category;
+	//private String category;
+	private Long categoryId;
 	private String brand;
 	private boolean popular;
 }

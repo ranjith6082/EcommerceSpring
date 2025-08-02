@@ -1,4 +1,4 @@
-package com.example.ecommercespring.dto;
+package com.example.ecommercespring.dto.category;
 
 import lombok.*;
 
@@ -9,6 +9,6 @@ import lombok.*;
 @Builder
 public class CategoryDTO {
 
-    private String categories;
-
+    private Long id;
+    private String name;
 }

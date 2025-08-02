@@ -1,7 +1,8 @@
-package com.example.ecommercespring.dto;
+package com.example.ecommercespring.dto.fakestore;
 
 import java.util.List;
 
+import com.example.ecommercespring.dto.ProductsItemDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

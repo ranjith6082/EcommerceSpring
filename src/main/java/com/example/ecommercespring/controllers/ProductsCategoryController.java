@@ -1,7 +1,6 @@
 package com.example.ecommercespring.controllers;
 
 
-import com.example.ecommercespring.dto.ProductDTO;
 import com.example.ecommercespring.dto.ProductsItemDTO;
 import com.example.ecommercespring.services.IProductsCategoryService;
 import org.springframework.http.ResponseEntity;

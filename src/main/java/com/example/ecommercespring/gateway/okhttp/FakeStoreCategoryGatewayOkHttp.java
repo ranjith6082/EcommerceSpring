@@ -1,13 +1,20 @@
-package com.example.ecommercespring.gateway;
+package com.example.ecommercespring.gateway.okhttp;
 
 import com.example.ecommercespring.dto.*;
+import com.example.ecommercespring.dto.category.CategoryDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreCategoryResponseDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreProductResponseDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreProductsCategoryResponseDTO;
+import com.example.ecommercespring.dto.product.ProductDTO;
+import com.example.ecommercespring.gateway.IProductsCategoryGateway;
+import com.example.ecommercespring.gateway.category.ICategoryGateway;
+import com.example.ecommercespring.gateway.product.IProductGateway;
 import com.example.ecommercespring.mappers.GetAllCategoriesMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,7 +24,7 @@ import java.util.List;
 
 //@Primary
 @Component("fakeStoreCategoryGatewayOkHttp")
-public class FakeStoreCategoryGatewayOkHttp implements ICategoryGateway,IProductGateway,IProductsCategoryGateway {
+public class FakeStoreCategoryGatewayOkHttp implements ICategoryGateway, IProductGateway, IProductsCategoryGateway {
 
     private final OkHttpClient client;
     private final String baseUrl;

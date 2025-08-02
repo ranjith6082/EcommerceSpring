@@ -1,7 +1,11 @@
 package com.example.ecommercespring.controllers;
 
-import com.example.ecommercespring.dto.CategoryDTO;
-import com.example.ecommercespring.services.ICategoryService;
+import com.example.ecommercespring.dto.category.CategoryDTO;
+import com.example.ecommercespring.dto.categorywithallproducts.AllProductsOfCategoryDTO;
+import com.example.ecommercespring.exception.CategoryNotFoundException;
+import com.example.ecommercespring.exception.ProductNotFoundException;
+import com.example.ecommercespring.services.category.ICategoryService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +19,39 @@ public class CategoryController {
     //@Autowired
     private final ICategoryService categoryService;
 
-    CategoryController(ICategoryService _categoryService){
-        this.categoryService = _categoryService;
+    CategoryController(ICategoryService categoryService){
+        this.categoryService = categoryService;
     }
+
+//    @GetMapping
+//    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
+//        List<CategoryDTO> result =  this.categoryService.getAllCategories();
+//        return ResponseEntity.ok(result);
+//    }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
-        List<CategoryDTO> result =  this.categoryService.getAllCategories();
-        return ResponseEntity.ok(result);
+    public ResponseEntity<?> getAllCategories(@RequestParam(required=false) String name) throws IOException{
+        if(name != null && !name.isBlank()){
+            CategoryDTO categoryDTO = categoryService.getByName(name);
+            return ResponseEntity.ok(categoryDTO);
+        }else{
+            List<CategoryDTO> result = this.categoryService.getAllCategories();
+            return ResponseEntity.ok(result);
+        }
     }
 
+
     @PostMapping
-    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
-        throw new UnsupportedOperationException("Method not implemented yet");
+    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) throws IOException {
+        CategoryDTO created = categoryService.createCategory(categoryDTO);
+        return ResponseEntity.ok(created);
+    }
+
+
+    @GetMapping("/{id}/products")
+    public ResponseEntity<AllProductsOfCategoryDTO> getAllProductsOfCategory(@PathVariable long id) throws Exception{
+
+        AllProductsOfCategoryDTO dto = categoryService.getAllProductsOfCategory(id);
+        return ResponseEntity.ok(dto);
     }
 }

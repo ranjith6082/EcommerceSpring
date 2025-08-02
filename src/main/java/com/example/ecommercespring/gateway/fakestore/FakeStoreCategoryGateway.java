@@ -1,17 +1,17 @@
-package com.example.ecommercespring.gateway;
+package com.example.ecommercespring.gateway.fakestore;
 
-import com.example.ecommercespring.dto.*;
+import com.example.ecommercespring.dto.category.CategoryDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreCategoryResponseDTO;
 import com.example.ecommercespring.gateway.api.FakeStoreCategoryApi;
+import com.example.ecommercespring.gateway.category.ICategoryGateway;
 import com.example.ecommercespring.mappers.GetAllCategoriesMapper;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.io.IOException;
 import java.util.List;
 
 @Component("fakeStoreCategoryGateway")
-public class FakeStoreCategoryGateway implements ICategoryGateway{
+public class FakeStoreCategoryGateway implements ICategoryGateway {
 
     private final FakeStoreCategoryApi fakeStoreCategoryApi;
 

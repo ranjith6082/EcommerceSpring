@@ -1,6 +1,6 @@
 package com.example.ecommercespring.gateway.api;
 
-import com.example.ecommercespring.dto.FakeStoreProductResponseDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreProductResponseDTO;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

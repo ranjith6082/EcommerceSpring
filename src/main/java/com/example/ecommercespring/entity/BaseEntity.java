@@ -36,6 +36,7 @@ public class BaseEntity {
     @Column(nullable = false)
     private Instant updatedAt;
 
+
     // This method as automatically called before the entity is saved for the first time
     @PrePersist
     protected void onCreate(){

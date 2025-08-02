@@ -1,5 +1,6 @@
-package com.example.ecommercespring.dto;
+package com.example.ecommercespring.dto.fakestore;
 
+import com.example.ecommercespring.dto.product.ProductDTO;
 import lombok.Data;
 
 @Data

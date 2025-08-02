@@ -1,6 +1,5 @@
 package com.example.ecommercespring.services;
 
-import com.example.ecommercespring.dto.ProductDTO;
 import com.example.ecommercespring.dto.ProductsItemDTO;
 
 import java.io.IOException;

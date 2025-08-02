@@ -1,6 +1,6 @@
-package com.example.ecommercespring.gateway;
+package com.example.ecommercespring.gateway.product;
 
-import com.example.ecommercespring.dto.ProductDTO;
+import com.example.ecommercespring.dto.product.ProductDTO;
 
 import java.io.IOException;
 

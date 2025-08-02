@@ -1,9 +1,16 @@
-package com.example.ecommercespring.gateway;
+package com.example.ecommercespring.gateway.resttemplate;
 
 import com.example.ecommercespring.dto.*;
+import com.example.ecommercespring.dto.category.CategoryDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreCategoryResponseDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreProductResponseDTO;
+import com.example.ecommercespring.dto.fakestore.FakeStoreProductsCategoryResponseDTO;
+import com.example.ecommercespring.dto.product.ProductDTO;
+import com.example.ecommercespring.gateway.IProductsCategoryGateway;
+import com.example.ecommercespring.gateway.category.ICategoryGateway;
+import com.example.ecommercespring.gateway.product.IProductGateway;
 import com.example.ecommercespring.mappers.GetAllCategoriesMapper;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +22,7 @@ import java.util.List;
 
 @Component("fakeStoreRestTemplateGateway")
 //@Primary
-public class FakeStoreRestTemplateGateway implements ICategoryGateway,IProductGateway,IProductsCategoryGateway{
+public class FakeStoreRestTemplateGateway implements ICategoryGateway, IProductGateway, IProductsCategoryGateway {
 
     private final RestTemplateBuilder restTemplateBuilder;
 

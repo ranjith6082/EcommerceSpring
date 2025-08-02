@@ -1,8 +1,8 @@
-package com.example.ecommercespring.services;
+package com.example.ecommercespring.services.fakestore;
 
-import com.example.ecommercespring.dto.ProductDTO;
 import com.example.ecommercespring.dto.ProductsItemDTO;
 import com.example.ecommercespring.gateway.IProductsCategoryGateway;
+import com.example.ecommercespring.services.IProductsCategoryService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class FakeStoreProductsCategoryService implements IProductsCategoryService{
+public class FakeStoreProductsCategoryService implements IProductsCategoryService {
 
     private final IProductsCategoryGateway productsCategoryGateway;
 
