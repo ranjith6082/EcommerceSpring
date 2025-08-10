@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
@@ -41,4 +42,27 @@ public class ProductController {
         ProductWithCategoryDTO dto = productService.getProductWithCategory(id);
         return ResponseEntity.ok(dto);
     }
+
+
+    @GetMapping
+    public ResponseEntity<List<ProductDTO>> getAllProducts() throws IOException {
+        List<ProductDTO> products = productService.getAllProducts();
+        return ResponseEntity.ok(products);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) throws IOException {
+        productService.deleteProductById(id);
+        return ResponseEntity.noContent().build(); // 204 No Content
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDTO> updateProductBrand(
+            @PathVariable Long id,
+            @RequestParam String brand) throws IOException {
+
+        ProductDTO updated = productService.updateProductBrand(id, brand);
+        return ResponseEntity.ok(updated);
+    }
+
 }

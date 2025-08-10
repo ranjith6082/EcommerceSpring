@@ -70,4 +70,26 @@ public class CategoryService implements ICategoryService {
 //                .build();
         return CategoryMapper.toCategoryWithAllProductsDTO(category);
     }
+
+    @Override
+    public void deleteCategoryByName(String name) throws IOException {
+        Category category = repo.findByName(name)
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found with name: " + name));
+
+        repo.delete(category);
+    }
+
+    @Override
+    public CategoryDTO updateCategoryNameById(Long id, String name) throws IOException {
+        Category category = repo.findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found with id: " + id));
+
+        category.setName(name);
+        Category updated = repo.save(category);
+
+        return CategoryMapper.toDto(updated);
+    }
+
+
+
 }

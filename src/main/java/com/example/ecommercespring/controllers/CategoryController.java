@@ -54,4 +54,22 @@ public class CategoryController {
         AllProductsOfCategoryDTO dto = categoryService.getAllProductsOfCategory(id);
         return ResponseEntity.ok(dto);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteCategoryByName(@RequestParam String name) throws IOException {
+        categoryService.deleteCategoryByName(name);
+        return ResponseEntity.noContent().build(); // HTTP 204
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryDTO> updateCategoryNameById(
+            @PathVariable Long id,
+            @RequestParam String name) throws IOException {
+
+        CategoryDTO updated = categoryService.updateCategoryNameById(id, name);
+        return ResponseEntity.ok(updated);
+    }
+
+
 }

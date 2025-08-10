@@ -11,6 +11,7 @@ import com.example.ecommercespring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ProductService implements IProductService {
@@ -48,4 +49,33 @@ public class ProductService implements IProductService {
                 .orElseThrow(() -> new IOException("Product not found"));
         return ProductMapper.toProductWithCategoryDTO(product);
     }
+
+    @Override
+    public List<ProductDTO> getAllProducts() throws IOException {
+        List<Product> products = repo.findAll();
+        if(products.isEmpty()){
+            throw new IOException("No products found");
+        }
+        return products.stream().map(ProductMapper::toDtO)
+                .toList();
+    }
+
+    @Override
+    public void deleteProductById(Long id) throws IOException {
+        Product product = repo.findById(id)
+                .orElseThrow(() -> new IOException("Product not found with id: " + id));
+        repo.delete(product);
+    }
+
+    @Override
+    public ProductDTO updateProductBrand(Long id, String brand) throws IOException {
+        Product product = repo.findById(id)
+                .orElseThrow(() -> new IOException("Product not found with id: " + id));
+
+        product.setBrand(brand);
+        Product updated = repo.save(product);
+
+        return ProductMapper.toDtO(product);
+    }
+
 }

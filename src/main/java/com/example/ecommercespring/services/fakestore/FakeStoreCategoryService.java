@@ -39,4 +39,14 @@ public class FakeStoreCategoryService implements ICategoryService {
         return null;
     }
 
+    @Override
+    public void deleteCategoryByName(String name) throws IOException {
+
+    }
+
+    @Override
+    public CategoryDTO updateCategoryNameById(Long id, String name) throws IOException {
+        return null;
+    }
+
 }
